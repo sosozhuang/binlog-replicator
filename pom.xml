@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>mysql</groupId>
+    <artifactId>binlog-replicator</artifactId>
+    <version>1.0.0</version>
+
+    <name>Binlog Replicator</name>
+    <url>https://github.com/sosozhuang/binlog-replicator</url>
+    <description>
+        A high performance application that replicates MySQL Binlog to Kafka.
+    </description>
+
+    <developers>
+        <developer>
+            <name>ss</name>
+            <email>sosozhuang@163.com</email>
+        </developer>
+    </developers>
+
+</project>
