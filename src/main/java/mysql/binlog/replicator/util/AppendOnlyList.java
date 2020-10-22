@@ -3,6 +3,7 @@ package mysql.binlog.replicator.util;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.function.UnaryOperator;
 
 /**
@@ -12,12 +13,8 @@ import java.util.function.UnaryOperator;
  * @author zhuangshuo
  * Created by zhuangshuo on 2020/10/21.
  */
-public final class AppendOnlyList<E> extends ArrayList<E> {
+public final class AppendOnlyList<E> extends LinkedList<E> {
     private static final long serialVersionUID = -2544619381099237741L;
-
-    public AppendOnlyList(int initialCapacity) {
-        super(initialCapacity);
-    }
 
     public AppendOnlyList() {
     }
