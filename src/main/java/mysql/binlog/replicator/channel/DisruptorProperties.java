@@ -1,13 +1,15 @@
-package mysql.binlog.replicate.channel;
+package mysql.binlog.replicator.channel;
 
 import com.lmax.disruptor.*;
-import mysql.binlog.replicate.util.Configuration;
+import mysql.binlog.replicator.util.Configuration;
 
 /**
+ * Properties of Disruptor.
+ *
  * @author zhuangshuo
  * Created by zhuangshuo on 2020/3/5.
  */
-public class ChannelProperties {
+public class DisruptorProperties {
     private static final int DEFAULT_RING_BUFFER_SIZE = 2048;
     private static final String DEFAULT_WAIT_STRATEGY = "BLOCKING";
     private static final int DEFAULT_ENTRY_WORKER_THREADS = Math.max(1, Runtime.getRuntime().availableProcessors() / 2);
@@ -15,10 +17,11 @@ public class ChannelProperties {
     private final int entryWorkerThreads;
     private final WaitStrategy waitStrategy;
 
-    public ChannelProperties(Configuration config) {
-        this.entryBufferSize = config.getInteger("channel.entry.ringBuffer.size", DEFAULT_RING_BUFFER_SIZE);
-        this.entryWorkerThreads = config.getInteger("channel.entry.workerThreads", DEFAULT_ENTRY_WORKER_THREADS);
-        this.waitStrategy = getWaitStrategyFromString(config.getString("channel.waitStrategy", DEFAULT_WAIT_STRATEGY));
+    public DisruptorProperties(Configuration config) {
+        String prefix = "replicator.disruptor.";
+        this.entryBufferSize = config.getInteger(prefix + "entry.ringBuffer.size", DEFAULT_RING_BUFFER_SIZE);
+        this.entryWorkerThreads = config.getInteger(prefix + "entry.workerThreads", DEFAULT_ENTRY_WORKER_THREADS);
+        this.waitStrategy = getWaitStrategyFromString(config.getString(prefix + "waitStrategy", DEFAULT_WAIT_STRATEGY));
     }
 
     private static WaitStrategy getWaitStrategyFromString(String s) {
@@ -52,7 +55,7 @@ public class ChannelProperties {
 
     @Override
     public String toString() {
-        return "ChannelProperties{" +
+        return "DisruptorProperties{" +
                 "entryBufferSize=" + entryBufferSize +
                 ", entryWorkerThreads=" + entryWorkerThreads +
                 ", waitStrategy=" + waitStrategy +
