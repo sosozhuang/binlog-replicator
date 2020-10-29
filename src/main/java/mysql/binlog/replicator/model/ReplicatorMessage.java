@@ -11,7 +11,7 @@ import java.util.concurrent.Future;
  */
 public class ReplicatorMessage {
     private Message canalMessage;
-    private final List<Event> events;
+    private final List<ReplicatorEvent> events;
     private final List<Future<?>> futures;
 
     public ReplicatorMessage() {
@@ -27,7 +27,7 @@ public class ReplicatorMessage {
         this.canalMessage = canalMessage;
     }
 
-    public List<Event> getEvents() {
+    public List<ReplicatorEvent> getEvents() {
         return events;
     }
 
