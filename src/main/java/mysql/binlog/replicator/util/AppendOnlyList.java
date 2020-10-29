@@ -11,7 +11,6 @@ import java.util.function.UnaryOperator;
  *
  * @param <E> the type of elements in this list
  * @author zhuangshuo
- * Created by zhuangshuo on 2020/10/21.
  */
 public final class AppendOnlyList<E> extends LinkedList<E> {
     private static final long serialVersionUID = -2544619381099237741L;

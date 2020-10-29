@@ -12,7 +12,6 @@ import java.util.Map;
 
 /**
  * @author zhuangshuo
- * Created by zhuangshuo on 2020/9/14.
  */
 public class EventMetricCollector extends AbstractLifeCycle {
     private static final CollectorRegistry REGISTRY = CollectorRegistry.defaultRegistry;

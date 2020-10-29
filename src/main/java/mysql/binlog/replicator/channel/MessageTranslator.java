@@ -2,17 +2,16 @@ package mysql.binlog.replicator.channel;
 
 import com.alibaba.otter.canal.protocol.Message;
 import com.lmax.disruptor.EventTranslatorOneArg;
-import mysql.binlog.replicator.model.ChannelMessage;
+import mysql.binlog.replicator.model.ReplicatorMessage;
 
 /**
- * Set {@link Message} to {@link ChannelMessage}.
+ * Set {@link Message} to {@link ReplicatorMessage}.
  *
  * @author zhuangshuo
- * Created by zhuangshuo on 2020/4/3.
  */
-public class MessageTranslator implements EventTranslatorOneArg<ChannelMessage, Message> {
+public class MessageTranslator implements EventTranslatorOneArg<ReplicatorMessage, Message> {
     @Override
-    public void translateTo(ChannelMessage channelMessage, long seq, Message message) {
-        channelMessage.setCanalMessage(message);
+    public void translateTo(ReplicatorMessage replicatorMessage, long seq, Message message) {
+        replicatorMessage.setCanalMessage(message);
     }
 }

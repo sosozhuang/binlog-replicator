@@ -2,7 +2,6 @@ package mysql.binlog.replicator.util;
 
 /**
  * @author zhuangshuo
- * Created by zhuangshuo on 2020/9/27.
  */
 public final class ByteUtil {
     private ByteUtil() {

@@ -8,7 +8,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * @author zhuangshuo
- * Created by zhuangshuo on 2020/9/27.
  */
 public abstract class AbstractLifeCycle implements LifeCycle {
     private static final Logger LOGGER = LoggerFactory.getLogger(AbstractLifeCycle.class);
@@ -19,8 +18,12 @@ public abstract class AbstractLifeCycle implements LifeCycle {
         this.name = this.getClass().getSimpleName();
     }
 
+    protected AbstractLifeCycle(int i) {
+        this(String.valueOf(i));
+    }
+
     protected AbstractLifeCycle(String name) {
-        this.name = Validate.notBlank(name, "name cannot be empty string");
+        this.name = this.getClass().getSimpleName() + "_" + Validate.notBlank(name, "name cannot be empty string");
     }
 
     private boolean checkAlreadyStarted() {

@@ -7,7 +7,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author zhuangshuo
- * Created by zhuangshuo on 2020/3/28.
  */
 public class SimpleThreadFactory implements ThreadFactory {
     private final String prefix;

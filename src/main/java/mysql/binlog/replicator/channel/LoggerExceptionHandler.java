@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
  * Logs stack trace of exception to logger.
  *
  * @author zhuangshuo
- * Created by zhuangshuo on 2020/4/3.
  */
 public class LoggerExceptionHandler<T> implements ExceptionHandler<T> {
     private static final Logger LOGGER = LoggerFactory.getLogger(LoggerExceptionHandler.class);

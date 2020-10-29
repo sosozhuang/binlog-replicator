@@ -8,7 +8,6 @@ import java.util.List;
  * Interface of class that holds metrics.
  *
  * @author zhuangshuo
- * Created by zhuangshuo on 2020/3/14.
  */
 public interface MetricHolder {
     /**

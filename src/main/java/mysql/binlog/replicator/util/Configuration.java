@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
 
 /**
  * @author zhuangshuo
- * Created by zhuangshuo on 2020/9/16.
  */
 public final class Configuration {
     private final Map<String, String> configMap;

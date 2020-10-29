@@ -4,7 +4,6 @@ package mysql.binlog.replicator.util;
  * A common interface defining methods for start/stop lifecycle control.
  *
  * @author zhuangshuo
- * Created by zhuangshuo on 2020/9/27.
  */
 public interface LifeCycle {
     /**

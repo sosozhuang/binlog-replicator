@@ -10,7 +10,6 @@ import java.net.URL;
 
 /**
  * @author zhuangshuo
- * Created by zhuangshuo on 2020/9/14.
  */
 public final class ResourceLoader {
     private static final Logger LOGGER = LoggerFactory.getLogger(ResourceLoader.class);

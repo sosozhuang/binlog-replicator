@@ -12,7 +12,6 @@ import static com.alibaba.otter.canal.common.zookeeper.ZookeeperPathUtils.ZOOKEE
  * Stores metrics in zookeeper.
  *
  * @author zhuangshuo
- * Created by zhuangshuo on 2020/9/19.
  */
 public class MetricStore {
     private final ZkClientx zkClientx;

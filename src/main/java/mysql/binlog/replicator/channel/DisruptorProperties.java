@@ -7,7 +7,6 @@ import mysql.binlog.replicator.util.Configuration;
  * Properties of Disruptor.
  *
  * @author zhuangshuo
- * Created by zhuangshuo on 2020/3/5.
  */
 public class DisruptorProperties {
     private static final int DEFAULT_RING_BUFFER_SIZE = 2048;
@@ -17,11 +16,10 @@ public class DisruptorProperties {
     private final int entryWorkerThreads;
     private final WaitStrategy waitStrategy;
 
-    public DisruptorProperties(Configuration config) {
-        String prefix = "replicator.disruptor.";
-        this.entryBufferSize = config.getInteger(prefix + "entry.ringBuffer.size", DEFAULT_RING_BUFFER_SIZE);
-        this.entryWorkerThreads = config.getInteger(prefix + "entry.workerThreads", DEFAULT_ENTRY_WORKER_THREADS);
-        this.waitStrategy = getWaitStrategyFromString(config.getString(prefix + "waitStrategy", DEFAULT_WAIT_STRATEGY));
+    DisruptorProperties(Configuration config) {
+        this.entryBufferSize = config.getInteger("entry.ringBuffer.size", DEFAULT_RING_BUFFER_SIZE);
+        this.entryWorkerThreads = config.getInteger("entry.workerThreads", DEFAULT_ENTRY_WORKER_THREADS);
+        this.waitStrategy = getWaitStrategyFromString(config.getString("waitStrategy", DEFAULT_WAIT_STRATEGY));
     }
 
     private static WaitStrategy getWaitStrategyFromString(String s) {
@@ -41,15 +39,15 @@ public class DisruptorProperties {
         }
     }
 
-    public int getEntryBufferSize() {
+    int getEntryBufferSize() {
         return entryBufferSize;
     }
 
-    public int getEntryWorkerThreads() {
+    int getEntryWorkerThreads() {
         return entryWorkerThreads;
     }
 
-    public WaitStrategy getWaitStrategy() {
+    WaitStrategy getWaitStrategy() {
         return waitStrategy;
     }
 
