@@ -74,60 +74,54 @@ public class ReplicatorEvent {
         private String table;
         private String eventType;
         private String replicator;
-        private long timestamp;
+        private String timestamp;
 
         public String getDestination() {
             return destination;
         }
 
-        public Metadata setDestination(String destination) {
+        public void setDestination(String destination) {
             this.destination = destination;
-            return this;
         }
 
         public String getSchema() {
             return schema;
         }
 
-        public Metadata setSchema(String schema) {
+        public void setSchema(String schema) {
             this.schema = schema;
-            return this;
         }
 
         public String getTable() {
             return table;
         }
 
-        public Metadata setTable(String table) {
+        public void setTable(String table) {
             this.table = table;
-            return this;
         }
 
         public String getEventType() {
             return eventType;
         }
 
-        public Metadata setEventType(String eventType) {
+        public void setEventType(String eventType) {
             this.eventType = eventType;
-            return this;
         }
 
         public String getReplicator() {
             return replicator;
         }
 
-        public Metadata setReplicator(String replicator) {
+        public void setReplicator(String replicator) {
             this.replicator = replicator;
-            return this;
         }
 
-        public long getTimestamp() {
+        public String getTimestamp() {
             return timestamp;
         }
 
-        public Metadata setTimestamp(long timestamp) {
+        public void setTimestamp(String timestamp) {
             this.timestamp = timestamp;
-            return this;
         }
 
         @Override
