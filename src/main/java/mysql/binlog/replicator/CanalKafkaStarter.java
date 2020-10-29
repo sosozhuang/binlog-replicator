@@ -1,12 +1,14 @@
-package mysql.binlog.replicate.canal;
+package mysql.binlog.replicator;
 
 import com.alibaba.otter.canal.instance.core.CanalInstance;
 import com.alibaba.otter.canal.server.CanalMQStarter;
 import com.alibaba.otter.canal.server.embedded.CanalServerWithEmbedded;
-import mysql.binlog.replicate.metric.EventMetricCollector;
-import mysql.binlog.replicate.metric.MetricStore;
-import mysql.binlog.replicate.util.Configuration;
-import mysql.binlog.replicate.util.LifeCycle;
+import mysql.binlog.replicator.concurrent.SimpleThreadFactory;
+import mysql.binlog.replicator.metric.EventMetricCollector;
+import mysql.binlog.replicator.metric.MetricStore;
+import mysql.binlog.replicator.source.CanalClientTask;
+import mysql.binlog.replicator.util.Configuration;
+import mysql.binlog.replicator.util.LifeCycle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
@@ -19,7 +21,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * Start with {@link com.alibaba.otter.canal.deployer.CanalController}.
  *
  * @author zhuangshuo
- * Created by T_zhuangshuo_kzx on 2020/9/26.
  */
 public class CanalKafkaStarter extends CanalMQStarter implements LifeCycle {
     private static final Logger LOGGER = LoggerFactory.getLogger(CanalKafkaStarter.class);
@@ -31,7 +32,7 @@ public class CanalKafkaStarter extends CanalMQStarter implements LifeCycle {
     private final CanalServerWithEmbedded canalServer;
     private final Map<String, CanalClientTask> tasks;
 
-    public CanalKafkaStarter(Configuration config) {
+    CanalKafkaStarter(Configuration config) {
         super(null);
         this.config = config;
         // disable netty
@@ -39,7 +40,7 @@ public class CanalKafkaStarter extends CanalMQStarter implements LifeCycle {
         System.setProperty("canal.instance.filter.transaction.entry", "true");
         this.started = new AtomicBoolean(false);
         this.executorService = new ThreadPoolExecutor(1, 16,
-                30, TimeUnit.SECONDS, new SynchronousQueue<>());
+                30, TimeUnit.SECONDS, new SynchronousQueue<>(), new SimpleThreadFactory("destination"));
         this.metricStore = new MetricStore(this.config.getString("canal.zkServers"));
         this.metricCollector = new EventMetricCollector();
         this.canalServer = CanalServerWithEmbedded.instance();
