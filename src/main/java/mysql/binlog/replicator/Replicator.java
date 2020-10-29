@@ -1,9 +1,8 @@
-package mysql.binlog.replicate;
+package mysql.binlog.replicator;
 
 import com.alibaba.otter.canal.deployer.CanalConstants;
 import com.alibaba.otter.canal.deployer.CanalController;
-import mysql.binlog.replicate.canal.CanalKafkaStarter;
-import mysql.binlog.replicate.util.Configuration;
+import mysql.binlog.replicator.util.Configuration;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

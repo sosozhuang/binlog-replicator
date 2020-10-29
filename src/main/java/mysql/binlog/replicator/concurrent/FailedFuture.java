@@ -1,4 +1,4 @@
-package mysql.binlog.replicate.concurrent;
+package mysql.binlog.replicator.concurrent;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -9,7 +9,6 @@ import java.util.concurrent.TimeoutException;
  * A Future is already failed.
  *
  * @author zhuangshuo
- * Created by T_zhuangshuo_kzx on 2020/5/5.
  */
 public class FailedFuture implements Future<Void> {
     private final ExecutionException e;
