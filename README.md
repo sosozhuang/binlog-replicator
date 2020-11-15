@@ -42,3 +42,15 @@ cd binlog-replicator-1.0.0
 ./bin/startup.sh
 ```
 执行 `./bin/stop.sh`可以停止程序运行.
+
+## 配置项
+|    配置名称    |    类型    |    默认值    |    必输项    |    描述    |
+| -------------- | ---------- | ------------ | -----------  |------------- |
+| replicator.canal.batchSize | Integer | 1024 | True | 每次向canal获取得binlog数量，控制复制延迟和吞吐 |
+| replicator.disruptor.entry.ringBuffer.size | Integer | 2048 | True | 内存队列的长度，必须为2的幂次方 |
+| replicator.disruptor.entry.workerThreads  | Integer | CPU个数/2 | True | 内存队列的工作线程数 |
+| replicator.disruptor.waitStrategy | Enum | Blocking | True | 内存队列工作线程的等待策略，可为blocking/busy_spin/lite_blocking/sleeping/yielding |
+| replicator.kafka.tableTopics | String |    | False | MySQL表对应发送到Kafka topic，格式为"shema.table:topic,schema.table:topic"，表名称可使用正则表达式 |
+| replicator.kafka.defaultTopic | String | binlog-replicator | False | replicator.kafka.tableTopics为空或匹配不上时，发送到Kafka的默认topic |
+| replicator.kafka.producer.* | Object  |    |    | Kafka生产者配置项，必须配置bootstrap servers |
+具体可以参考[replicator.properties](https://github.com/sosozhuang/binlog-replicator/blob/main/src/main/resources/replicator.properties)。
